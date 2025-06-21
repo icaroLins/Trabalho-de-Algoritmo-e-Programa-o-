@@ -3,15 +3,18 @@
 #include "MYfuncion.h"
 
 int main(void){
-	int caido=0, marcelo=0, steafami=0, mangao=0;  
-	int op;
+	int cond;
+	cond=0;
 	
 	setlocale(LC_ALL, "Portuguese");
 	
 	nome();
 	menu();
-	voto_senador();
+	voto_senador(&cond);
+	
+	if(cond == 0){
 	voto_presidente();
+    }
 	
 return 0;
 }

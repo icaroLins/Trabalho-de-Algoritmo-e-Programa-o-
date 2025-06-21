@@ -1,4 +1,4 @@
-void menu(){
+void menu(void){
 
 	printf("\t---------------------------------------------------------\n");
 
@@ -21,32 +21,42 @@ void menu(){
 	printf("\n  \t|\tPutin (Psol)       - 29             \t\t|");
 	printf("\n\t----------------------------------------------------------\n");
 }
-void nome(){
+void nome(void){
     char nome[15];
     printf("\nDigite seu nome:\n");
 	scanf(" %[^\n]", nome);
 	printf("Nome digitado: %s\n\n", nome);
 
 }
-void voto_senador(){
+void voto_senador(int *a){
 
     int Caiado = 0, Marcelod2 = 0, Stefani = 0, Mangao = 0;
     int voto_senador;
     int votos_dados =0;
+    int aux = 0, cont=0;
+    int cond = 0;
 
 
-    printf("Você tem direito a 2 votos para senador.");
+    printf("Você tem direito a 2 votos para senador diferentes!");
 
     while (votos_dados < 2) {
-        printf("Digite o número do senador escolhido: ");
-        scanf("%d", &voto_senador);
+        printf("\nDigite o número do senador escolhido: ");
+        scanf("%i", &voto_senador);
+        
+        if(aux == 0){
+        	aux = voto_senador;
+        	cont++;
+		}
+		
+		if(voto_senador != aux || cont ==1){
+			cont++;
 
         switch(voto_senador) {
             case 151:
                 printf("Voto dado a Caiado\n");
                 Caiado++;
                 break;
-            case 172:
+            case 171:
                 printf("Voto dado a Marcelo D2\n");
                 Marcelod2++;
                 break;
@@ -60,19 +70,27 @@ void voto_senador(){
                 break;
         }
         votos_dados++;
-    }
+        cond=0;
+        *a=cond;
+    }   
+	else if(cont == 2 && voto_senador == aux){
+    	printf("\nNão é possivel votar no mesmo senador tente outro!!");
+    	cond=1;
+    	*a=cond;
+	}
+	}
 
 }
-void voto_presidente(){
+void voto_presidente(void){
     int Bolsonaro= 0,Lula =0,Putin =0;
     int voto_presidente;
     int votos_dados = 0;
 
     printf("Você tem direito a 1 votos para Presidente");
 
-    while(votos_dados <= 1){
-        printf("Digite o numero do presidente");
-        scanf("%d",&voto_presidente);
+    while(votos_dados < 1){
+        printf("\nDigite o numero do presidente: ");
+        scanf("%i",&voto_presidente);
 
         switch(voto_presidente){
             case 22:
@@ -84,7 +102,7 @@ void voto_presidente(){
                 Lula++;
                 break;
             case 29:
-                printf("VOto dado a Putin");
+                printf("Voto dado a Putin");
                 break;
             }
             votos_dados++;
